@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BQLNBVn/bHfx495J924AqczmMc9ihbSLACJEpB8h+fh8Dy22RR1htyyVJ5lc0cMpsoliXutRo87dHoSdWhqo6w==",
+  "dgSpecHash": "1/ChwI0ECqxZWP1lfSiudNO2hcEfhlW3YgsGuNXRYkNA3Tn4553cqcVoMhm/d2OAOoTgA83gvbrzIA/6iKWwUg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jarne\\source\\repos\\IceCreamShopContentful\\IceCreamShopContentful.csproj",
+  "projectFilePath": "C:\\Users\\jarne\\source\\repos\\DevOps-Ice-Cream-Shop\\IceCreamShopContentful.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jarne\\.nuget\\packages\\contentful.aspnetcore\\7.4.3\\contentful.aspnetcore.7.4.3.nupkg.sha512",
     "C:\\Users\\jarne\\.nuget\\packages\\contentful.csharp\\7.4.3\\contentful.csharp.7.4.3.nupkg.sha512",
