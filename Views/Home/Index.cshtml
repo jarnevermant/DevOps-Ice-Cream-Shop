@@ -1,0 +1,25 @@
+﻿@using Contentful.Core.Models
+
+@model ContentfulCollection<IceCream>
+
+<h1>Ice Cream Shop</h1>
+
+<div class="ice-cream-container">
+    @foreach (var iceCream in Model)
+    {
+        if (iceCream.ShownOnWebsite)
+        {
+            <div class="ice-cream-card">
+                <p class="flavor">@iceCream.Flavor</p>
+                <img src="@iceCream.Image.File.Url" alt="@iceCream.Flavor"/>
+                <div class="serving-options">
+                    <p class="subtitle">Serving Options</p>
+                    @foreach (var servingOption in iceCream.ServingOptions)
+                    {
+                        <p class="serving-option">@servingOption</p>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

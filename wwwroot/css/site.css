@@ -1,0 +1,74 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.ice-cream-container {
+    display: flex;
+    margin-block: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+@media (min-width: 786px) {
+    .ice-cream-container {
+        justify-content: flex-start;
+    }
+}
+
+.ice-cream-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    text-align: center;
+    width: 200px;
+}
+
+.ice-cream-card .flavor {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.ice-cream-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.ice-cream-card .subtitle {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.ice-cream-card .serving-options {
+    flex-grow: 1;
+    padding: 5px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ice-cream-card .serving-options .serving-option {
+    margin-bottom: 4px;
+    color: dimgray;
+}
