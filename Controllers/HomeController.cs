@@ -1,7 +1,6 @@
 ﻿using IceCreamShopContentful.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using IceCreamShopContentful.Models;
 using Contentful.Core;
 
 namespace IceCreamShopContentful.Controllers
@@ -19,8 +18,18 @@ namespace IceCreamShopContentful.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var iceCreams = await _client.GetEntries<IceCream>();
-            return View(iceCreams);
+            var flavors = await _client.GetEntriesByType<Flavor>("flavor");
+            var servingOptions = await _client.GetEntriesByType<ServingOption>("servingOption");
+            var toppings = await _client.GetEntriesByType<Topping>("topping");
+
+            var viewModel = new HomeViewModel
+            {
+                Flavors = flavors.ToList(),
+                ServingOptions = servingOptions.ToList(),
+                Toppings = toppings.ToList()
+            };
+
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

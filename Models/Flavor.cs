@@ -2,11 +2,11 @@
 
 namespace IceCreamShopContentful.Models
 {
-    public class IceCream
+    public class Flavor
     {
-        public string Flavor { get; set; }
-        public List<string> ServingOptions { get; set; }
+        public string Name { get; set; }
         public Asset Image { get; set; }
+        public float Price { get; set; }
         public bool ShownOnWebsite { get; set; }
     }
 }

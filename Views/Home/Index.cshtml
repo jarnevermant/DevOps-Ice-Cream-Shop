@@ -1,25 +1,94 @@
-﻿@using Contentful.Core.Models
+﻿@using Contentful.Core.Models;
 
-@model ContentfulCollection<IceCream>
+@model IceCreamShopContentful.Models.HomeViewModel;
 
-<h1>Ice Cream Shop</h1>
+<h1>Frank's Flavors</h1>
 
-<div class="ice-cream-container">
-    @foreach (var iceCream in Model)
-    {
-        if (iceCream.ShownOnWebsite)
-        {
-            <div class="ice-cream-card">
-                <p class="flavor">@iceCream.Flavor</p>
-                <img src="@iceCream.Image.File.Url" alt="@iceCream.Flavor"/>
-                <div class="serving-options">
-                    <p class="subtitle">Serving Options</p>
-                    @foreach (var servingOption in iceCream.ServingOptions)
-                    {
-                        <p class="serving-option">@servingOption</p>
-                    }
-                </div>
-            </div>
-        }
-    }
+<div class="tabs">
+    <input type="radio" id="tab-flavors" name="tab-group" checked>
+    <label for="tab-flavors">Flavors</label>
+
+    <input type="radio" id="tab-serving-options" name="tab-group">
+    <label for="tab-serving-options">Serving Options</label>
+
+    <input type="radio" id="tab-toppings" name="tab-group">
+    <label for="tab-toppings">Toppings</label>
+
+    <div class="card-container">
+
+        <div class="tab-content" id="content-flavors">
+            @foreach (var flavor in Model.Flavors)
+            {
+                if (flavor.ShownOnWebsite)
+                {
+                    <div class="card">
+                        <p class="name">@flavor.Name</p>
+                        <img src="@flavor.Image.File.Url" alt="@flavor.Name" />
+                        <hr>
+                        <p class="price"><span class="value">$@flavor.Price</span> / scoop</p>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="tab-content" id="content-serving-options">
+            @foreach (var servingOption in Model.ServingOptions)
+            {
+                @if (servingOption.ShownOnWebsite)
+                {
+                    <div class="card">
+                        <p class="name">@servingOption.Name</p>
+                        <img src="@servingOption.Image.File.Url" alt="@servingOption.Name" />
+                        <hr>
+                        <p class="price">
+                            <span class="value">
+                                @if (servingOption.Price.Equals(0))
+                                {
+                                    <text>Free</text>
+                                }
+                                else
+                                {
+                                    <text>$</text>@servingOption.Price
+                                }
+                            </span>
+                        </p>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="tab-content" id="content-toppings">
+            @foreach (var topping in Model.Toppings)
+            {
+                if (topping.ShownOnWebsite)
+                {
+                    <div class="card">
+                        <p class="name">@topping.Name</p>
+                        <img src="@topping.Image.File.Url" alt="@topping.Name" />
+                        <hr>
+                        <p class="price"><span class="value">$@topping.Price</span></p>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('content-flavors').style.display = 'flex';
+        const tabs = document.querySelectorAll('.tabs input[type="radio"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('change', function () {
+                const tabContentId = this.getAttribute('id').replace('tab-', 'content-');
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                document.getElementById(tabContentId).style.display = 'flex';
+            });
+        });
+    });
+</script>
