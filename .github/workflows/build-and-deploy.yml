@@ -6,7 +6,7 @@ on:
     branches:
       - main
 
-# Define jobs
+# Define jobs 
 jobs:
 
   # Build the Docker image and deploy it to Docker Hub
